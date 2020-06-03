@@ -255,7 +255,7 @@ func (m *Manager) SealPreCommit2(ctx context.Context, sector abi.SectorID, phase
 }
 
 func (m *Manager) SealCommit1(ctx context.Context, sector abi.SectorID, ticket abi.SealRandomness, seed abi.InteractiveSealRandomness, pieces []abi.PieceInfo, cids storage.SectorCids) (out storage.Commit1Out, err error) {
-	selector, err := newExistingSelector(ctx, m.index, sector, stores.FTCache|stores.FTSealed, false)
+	selector, err := newExistingSelector(ctx, m.index, sector, stores.FTCache|stores.FTSealed, true)
 	if err != nil {
 		return storage.Commit1Out{}, xerrors.Errorf("creating path selector: %w", err)
 	}
