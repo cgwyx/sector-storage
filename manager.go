@@ -351,7 +351,7 @@ func (m *Manager) SealCommit1(ctx context.Context, sector abi.SectorID, ticket a
 	// NOTE: We set allowFetch to false in so that we always execute on a worker
 	// with direct access to the data. We want to do that because this step is
 	// generally very cheap / fast, and transferring data is not worth the effort
-	selector, err := newExistingSelector(ctx, m.index, sector, stores.FTCache|stores.FTSealed, false)
+	selector, err := newExistingSelector(ctx, m.index, sector, stores.FTCache|stores.FTSealed, true)
 	if err != nil {
 		return storage.Commit1Out{}, xerrors.Errorf("creating path selector: %w", err)
 	}
